@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Today's Date & Lucky Number</title>
+  </head>
+  <body>
+
+    <p id="todayIs">Today is...</p>
+    <p id="luckyNum">Your lucky number is...</p>
+
+    <script type="text/javascript">
+
+      let now = new Date();
+      let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      let monthDayYearStr = `Today is ${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()}.`;
+      let randomNum1 = Math.floor(Math.random() *10)
+      let randomNum2 = Math.floor(Math.random() *10)
+      let randomNum3 = Math.floor(Math.random() *10)
+      let threeDigitRandomNum = `${randomNum1}${randomNum2}${randomNum3}`;
+      let luckyNumStr = `Your lucky number is ${threeDigitRandomNum}.`;
+
+      document.getElementById("todayIs").innerHTML = monthDayYearStr;
+      document.getElementById("luckyNum").innerHTML = luckyNumStr;
+
+    </script>
+
+  </body>
+</html>

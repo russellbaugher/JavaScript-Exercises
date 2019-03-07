@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<style>
+  #container {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    background: yellow;
+  }
+
+  #animate {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    /*background-color: red;*/
+  }
+
+  #animate2 {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    /*background-color: red;*/
+  }
+</style>
+
+<body onload="moveBoth()">
+
+  <div id="container">
+    <div id="animate">
+      <img src="assets/butterfly.gif" width="80" height="80" border="0">
+    </div>
+    <div id="animate2">
+      <img src="assets/butterfly.gif" width="80" height="80" border="0">
+    </div>
+  </div>
+
+  <script>
+    function myMove() {
+      var elem = document.getElementById("animate");
+      var pos = 0;
+      var id = setInterval(frame, 5);
+
+      function frame() {
+        if (pos == 350) {
+          clearInterval(id);
+          elem.style.visibility = "hidden";  //disappear after animation
+        } else {
+          pos++;
+          elem.style.top = pos + 'px';
+          elem.style.left = pos + 'px';
+        }
+      }
+    }
+
+    function myMove2() {
+      var elem = document.getElementById("animate2");
+      var pos = 0;
+      var id = setInterval(frame, 5);
+
+      function frame() {
+        if (pos == 350) {
+          clearInterval(id);
+          elem.style.visibility = "hidden"; //disappear after animation
+        } else {
+          pos++;
+          elem.style.bottom = pos + 'px';
+          elem.style.left = pos + 'px';
+        }
+      }
+    }
+
+    function moveBoth() {
+      myMove();
+      myMove2();
+    }
+
+    window.onload = moveBoth; //start animation on load
+  </script>
+
+</body>
+
+</html>

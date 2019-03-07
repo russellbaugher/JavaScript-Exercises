@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <!--Nested Tables-->
+  <table width="900" height="200">
+    <tr>
+      <!-- Left TD Cell -->
+      <td width="30%">
+        <table id="demo"></table>
+      </td>
+      <!-- Right TD Cell -->
+      <td id="showPhotoBig">
+        <img src="assets/image1B.jpg" />
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    var x, xmlhttp, xmlDoc
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("GET", "images1.xml", false);
+    xmlhttp.send();
+    xmlDoc = xmlhttp.responseXML;
+    x = xmlDoc.getElementsByTagName("photoPair");
+
+    table = "";
+    for (i = 0; i < x.length; i++) {
+      table += "<tr onmouseover='displayPHOTO(" + i + ")'><td>";
+      table += "<img src='" + x[i].getElementsByTagName("thumbnail")[0].childNodes[0].nodeValue;
+      table += " ' />";
+    }
+
+    document.getElementById("demo").innerHTML = table;
+
+    function displayPHOTO(i) {
+      document.getElementById("showPhotoBig").innerHTML =
+        "<img src=' " +
+        x[i].getElementsByTagName("photo")[0].childNodes[0].nodeValue + "' />";
+    }
+  </script>
+
+</body>
+
+</html>

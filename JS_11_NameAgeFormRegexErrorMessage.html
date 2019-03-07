@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Assignment 11 Form Validation</title>
+    <style type="text/css" media="screen">
+      #form {
+        display: table;
+        padding: 15px;
+      }
+      .row {
+        display: table-row;
+      }
+      .row label {
+        display: table-cell;
+        padding: 5px;
+      }
+      .row input {
+        display: table-cell;
+        padding: 3px;
+      }
+      .row p {
+        display: table-cell; /*toggle to display table-cell in js*/
+        padding: 2px;
+      }
+      p {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <form id="form" action="index.html" method="post">
+
+      <div class="row">
+        <label>Name:</label>
+        <input id="commentName" type="text"><br>
+        <p id="nameError"></p>
+      </div>
+
+      <div class="row">
+        <label>Age:</label>
+        <input id="commentAge" type="text"><br>
+        <p id="ageError"></p>
+      </div>
+
+      <button type="button" onclick="validateForm()" name="button">Submit</button>
+
+  <script type="text/javascript">
+
+    function validateName() {
+      let name = document.getElementById("commentName").value; //target comment value
+      if (name.length === 0) {
+        document.getElementById("nameError").innerHTML = "Name must be filled out"; //chain css color
+      } else if (!name.match(/^[A-Za-z]{2,20}$/)) {
+        document.getElementById("nameError").innerHTML = "Enter letters 2 to 20 only";
+        return false;
+      } else {
+        document.getElementById("nameError").innerHTML = "";
+      }
+    };
+
+    function validateAge() {
+      let age = document.getElementById("commentAge").value; //target comment value
+      if (age.length === 0) {
+        document.getElementById("ageError").innerHTML = "Age must be filled out";
+      } else if ( age < 10 || age > 120 || isNaN(age) ) {
+        document.getElementById("ageError").innerHTML = "Digits only or enter age between 10 and 120";
+        return false;
+      } else {
+        document.getElementById("ageError").innerHTML = "";
+      }
+    };
+
+    function validateForm() {
+      validateName();
+      validateAge();
+    };
+
+
+  </script>
+
+  </body>
+</html>

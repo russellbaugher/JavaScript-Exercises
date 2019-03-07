@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Final Exam Part 2</title>
+</head>
+
+<body>
+  <img src="img/townhouse1.jpg" id="placeholderImg" alt="">
+
+  <script type="text/javascript">
+    var elem = document.getElementById('placeholderImg');
+    imgArray = [
+      "assets/townhouse1.jpg",
+      "assets/townhouse2.jpg",
+      "assets/townhouse3.jpg",
+      "assets/townhouse4.jpg",
+      "assets/townhouse5.jpg"
+    ];
+
+    function changeImage(elem, imgArray) {
+
+        setInterval(function() {
+          var randomNum = Math.floor(Math.random() * imgArray.length); //[0-4]
+          console.log(randomNum);
+          elem.src = imgArray[randomNum];
+        }, 500);
+
+    };
+
+    changeImage(elem, imgArray); //call changeImage
+  </script>
+</body>
+
+</html>
